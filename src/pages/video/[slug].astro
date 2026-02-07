@@ -1,0 +1,55 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("video");
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Base title={entry.data.title}>
+  <div class="video-embed">
+    <iframe
+      src={`https://player.vimeo.com/video/${entry.data.vimeoId}`}
+      width="100%"
+      height="405"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <h1>{entry.data.title}</h1>
+  <div class="description">
+    <Content />
+  </div>
+</Base>
+
+<style>
+  .video-embed {
+    width: 100%;
+    padding-bottom: 16px;
+  }
+
+  .video-embed iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 12px;
+  }
+
+  .description {
+    line-height: 1.6;
+  }
+</style>

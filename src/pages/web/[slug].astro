@@ -1,0 +1,44 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("web");
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Base title={entry.data.title}>
+  <img src={entry.data.screenshot} alt={entry.data.title} />
+  <h1>
+    <a href={entry.data.url}>{entry.data.title}</a>
+  </h1>
+  <div class="description">
+    <Content />
+  </div>
+</Base>
+
+<style>
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 12px;
+  }
+
+  .description {
+    line-height: 1.6;
+  }
+</style>
