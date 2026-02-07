@@ -30,7 +30,7 @@ const sections = [
   { label: "video", collection: "video", items: getOrdered("video") },
   { label: "web", collection: "web", items: getOrdered("web") },
   { label: "image", collection: "image", items: getOrdered("image") },
-  { label: "music", collection: "music", items: getOrdered("music") },
+  { label: "music/poetry", collection: "music", items: getOrdered("music") },
 ];
 
 const separators = [
@@ -38,35 +38,99 @@ const separators = [
   "/images/separators/middle.png",
   "/images/separators/bottom.png",
 ];
+
+// Collect all preview hover rules
+const previewRules: { slug: string; separator: number; previewImage: string }[] = [];
+for (const section of sections) {
+  for (const item of section.items) {
+    if (item.data.preview) {
+      let previewImage = item.data.preview.image;
+      if (!previewImage && section.collection === "image") {
+        const img = item.data.image;
+        previewImage = Array.isArray(img) ? img[0] : img;
+      }
+      if (previewImage) {
+        previewRules.push({
+          slug: item.id,
+          separator: item.data.preview.separator,
+          previewImage,
+        });
+      }
+    }
+  }
+}
 ---
 
 <Base title="port">
-  {
-    sections.map((section, i) => (
+  <div class="home">
+    {sections.map((section, i) => (
       <>
         <p>
           {section.label}:{" "}
           {section.items.map((item, j) => (
             <>
               {j > 0 && ", "}
-              <a href={`/${item.id}`}>{item.data.title}</a>
+              <a
+                href={`/${item.id}`}
+                data-preview={item.data.preview ? item.id : undefined}
+              >{item.data.title}</a>
             </>
           ))}
         </p>
-        {i < separators.length && <img src={separators[i]} alt="" />}
+        {i < separators.length && (
+          <div class="separator" id={`sep-${i + 1}`}>
+            <img src={separators[i]} alt="" class="separator-default" />
+            {previewRules
+              .filter((r) => r.separator === i + 1)
+              .map((r) => (
+                <img
+                  src={r.previewImage}
+                  alt=""
+                  class="separator-preview"
+                  data-for={r.slug}
+                />
+              ))}
+          </div>
+        )}
       </>
-    ))
-  }
+    ))}
+  </div>
 </Base>
+
+<style is:global set:html={previewRules.map((r) =>
+  `.home:has(a[data-preview="${r.slug}"]:hover) #sep-${r.separator} .separator-default { opacity: 0; }
+.home:has(a[data-preview="${r.slug}"]:hover) #sep-${r.separator} .separator-preview[data-for="${r.slug}"] { opacity: 1; }`
+).join("\n")} />
 
 <style>
   p {
     padding: 10px 0;
   }
 
-  img {
+  .separator {
+    position: relative;
+    width: 100%;
+  }
+
+  .separator img {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  .separator-default {
+    transition: opacity 0.15s;
+  }
+
+  .separator-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
   }
 </style>

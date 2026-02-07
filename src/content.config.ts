@@ -2,11 +2,17 @@ import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { z } from "astro/zod";
 
+const preview = z.object({
+  image: z.string().optional(),
+  separator: z.number(),
+}).optional();
+
 const video = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/video" }),
   schema: z.object({
     title: z.string(),
     date: z.string().optional(),
+    preview,
     vimeoId: z.string(),
   }),
 });
@@ -16,6 +22,7 @@ const image = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string().optional(),
+    preview,
     image: z.union([z.string(), z.array(z.string())]),
   }),
 });
@@ -25,6 +32,7 @@ const web = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string().optional(),
+    preview,
     url: z.string(),
     screenshot: z.string().optional(),
   }),
@@ -35,6 +43,7 @@ const music = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string().optional(),
+    preview,
     bandcampId: z.string(),
     bandcampType: z.enum(["album", "track"]),
   }),
