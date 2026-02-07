@@ -16,7 +16,7 @@ const image = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string().optional(),
-    image: z.string(),
+    image: z.union([z.string(), z.array(z.string())]),
   }),
 });
 

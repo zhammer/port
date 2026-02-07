@@ -1,4 +1,9 @@
 ---
 title: "END OF BE"
-image: "/images/pieces/end-of-be.jpg"
+date: "June 2025"
+image:
+  - "/images/pieces/end-of-be-1.png"
+  - "/images/pieces/end-of-be-2.png"
 ---
+
+a collage for the end of times.

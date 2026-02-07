@@ -1,5 +1,6 @@
 ---
 title: "what the 55"
-bandcampId: "0000000000"
-bandcampType: "album"
+date: "September 2025"
+bandcampId: "2515243433"
+bandcampType: "track"
 ---

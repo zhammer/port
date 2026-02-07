@@ -1,5 +1,6 @@
 ---
 title: "six white horses"
-bandcampId: "0000000000"
+date: "November 2024"
+bandcampId: "1829534965"
 bandcampType: "album"
 ---

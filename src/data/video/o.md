@@ -6,3 +6,7 @@ vimeoId: "1102220306"
 
 the modern pulse moves very quickly
 &nbsp;&nbsp;There is no time for formality
+
+\-
+
+a video collage piece that also serves as a creation video to one of my old esoteric loves: keynote collage. music is _allstar_ by MIKE ft. earl sweatshirt

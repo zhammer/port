@@ -35,6 +35,10 @@ export async function getStaticPaths() {
 const { entry, kind } = Astro.props;
 const { Content } = await render(entry);
 
+const images = kind === "image"
+  ? Array.isArray(entry.data.image) ? entry.data.image : [entry.data.image]
+  : [];
+
 const bandcampSrc =
   kind === "music"
     ? entry.data.bandcampType === "album"
@@ -60,7 +64,9 @@ const bandcampSrc =
     )
   }
 
-  {kind === "image" && <img src={entry.data.image} alt={entry.data.title} />}
+  {kind === "image" && images.map((src) => (
+    <img src={src} alt={entry.data.title} />
+  ))}
 
   {kind === "web" && <img src={entry.data.screenshot} alt={entry.data.title} />}
 

@@ -1,4 +1,7 @@
 ---
 title: "train // a bassist silence"
-vimeoId: "000000000"
+date: "January 2025"
+vimeoId: "1102221278"
 ---
+
+shai maestro quartet @ lunático | jamaica station | cold spring harbor station
