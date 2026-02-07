@@ -1,0 +1,138 @@
+---
+import Base from "../layouts/Base.astro";
+import BackBar from "../components/BackBar.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const [videoEntries, imageEntries, webEntries, musicEntries] =
+    await Promise.all([
+      getCollection("video"),
+      getCollection("image"),
+      getCollection("web"),
+      getCollection("music"),
+    ]);
+
+  return [
+    ...videoEntries.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, kind: "video" as const },
+    })),
+    ...imageEntries.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, kind: "image" as const },
+    })),
+    ...webEntries.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, kind: "web" as const },
+    })),
+    ...musicEntries.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, kind: "music" as const },
+    })),
+  ];
+}
+
+const { entry, kind } = Astro.props;
+const { Content } = await render(entry);
+
+const bandcampSrc =
+  kind === "music"
+    ? entry.data.bandcampType === "album"
+      ? `https://bandcamp.com/EmbeddedPlayer/album=${entry.data.bandcampId}/size=large/bgcol=ffffff/linkcol=1a1a1a/artwork=small/transparent=true/`
+      : `https://bandcamp.com/EmbeddedPlayer/track=${entry.data.bandcampId}/size=large/bgcol=ffffff/linkcol=1a1a1a/artwork=small/transparent=true/`
+    : "";
+---
+
+<Base title={entry.data.title}>
+  <BackBar />
+  {
+    kind === "video" && (
+      <div class="video-embed">
+        <iframe
+          src={`https://player.vimeo.com/video/${entry.data.vimeoId}`}
+          width="100%"
+          height="405"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        />
+      </div>
+    )
+  }
+
+  {kind === "image" && <img src={entry.data.image} alt={entry.data.title} />}
+
+  {kind === "web" && <img src={entry.data.screenshot} alt={entry.data.title} />}
+
+  {
+    kind === "music" && (
+      <div class="music-embed">
+        <iframe
+          src={bandcampSrc}
+          seamless
+          style="border: 0; width: 100%; height: 120px;"
+        />
+      </div>
+    )
+  }
+
+  <div class="text">
+  <h1>
+    {
+      kind === "web" ? (
+        <a href={entry.data.url}>{entry.data.title}</a>
+      ) : (
+        entry.data.title
+      )
+    }
+    {entry.data.date && ` (${entry.data.date})`}
+  </h1>
+
+  <div class="description">
+    <Content />
+  </div>
+</div>
+</Base>
+
+<style>
+  .video-embed {
+    width: 100%;
+    padding-bottom: 16px;
+  }
+
+  .video-embed iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom: 16px;
+  }
+
+  .music-embed {
+    padding-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 12px;
+  }
+
+  .text {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .description {
+    line-height: 1.6;
+  }
+
+  .description :global(p + p) {
+    padding-top: 16px;
+  }
+</style>

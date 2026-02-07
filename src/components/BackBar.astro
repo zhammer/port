@@ -1,0 +1,95 @@
+---
+const DASH = "-";
+const WAVE = "\u2248";
+const CYCLE = 4;
+const WAVE_LEN = 2;
+const COUNT = 120;
+
+function makeFrame(offset: number) {
+  let chars = "";
+  for (let i = 0; i < COUNT; i++) {
+    const pos = ((i + offset) % CYCLE + CYCLE) % CYCLE;
+    chars += pos < WAVE_LEN ? WAVE : DASH;
+  }
+  return chars;
+}
+
+const frames = [0, 1, 2, 3].map(makeFrame);
+const dashes = DASH.repeat(COUNT);
+---
+
+<a href="/" class="back-bar">
+  <span class="arrow">&lt;</span>
+  <span class="track">
+    <span class="static">{dashes}</span>
+    <span class="anim">
+      <span>{frames[0]}</span>
+      <span>{frames[1]}</span>
+      <span>{frames[2]}</span>
+      <span>{frames[3]}</span>
+    </span>
+  </span>
+</a>
+
+<style>
+  .back-bar {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1;
+    color: #707070;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0 24px;
+    cursor: pointer;
+  }
+
+  .back-bar:hover {
+    color: #707070;
+  }
+
+  .arrow {
+    flex-shrink: 0;
+  }
+
+  .track {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .static {
+    display: inline;
+  }
+
+  .anim {
+    display: none;
+  }
+
+  .anim > span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+  }
+
+  .back-bar:hover .static {
+    visibility: hidden;
+  }
+
+  .back-bar:hover .anim {
+    display: inline;
+  }
+
+  @keyframes show {
+    0%   { visibility: visible; }
+    25%  { visibility: hidden; }
+    100% { visibility: hidden; }
+  }
+
+  .back-bar:hover .anim > span:nth-child(1) { animation: show 320ms step-end 0ms infinite; }
+  .back-bar:hover .anim > span:nth-child(2) { animation: show 320ms step-end 80ms infinite; }
+  .back-bar:hover .anim > span:nth-child(3) { animation: show 320ms step-end 160ms infinite; }
+  .back-bar:hover .anim > span:nth-child(4) { animation: show 320ms step-end 240ms infinite; }
+</style>

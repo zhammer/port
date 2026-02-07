@@ -1,0 +1,13 @@
+---
+title: "Spätwerk"
+date: "June 2024"
+image: "/images/pieces/spatwerk.png"
+---
+
+Excerpt is from Edward Said’s _Freud and the Non-European_, Said’s last book from a lecture he gave that was banned by the Freud institute in Vienna. Said is writing about _Freud’s_ last book: Moses and Monotheism.
+
+“In Beethoven’s case and in Freud’s, as I hope to show, the intellectual trajectory conveyed by the late work is intransigence and a sort of irascible transgressiveness, as if the author was expected to settle down into a harmonious composure, as befits a person at the end of his life, but preferred instead to be difficult, and to bristle with all sorts of new ideas and provocations. Freud explicitly confesses to this unseemliness in a footnote early in Moses where, without embarrassment, he refers to his autocratic, arbitrary and even unscrupulous way with biblical evidence. There are also explicit reminders to the reader that the author is an old man, and may not be up to his task; at the end of the second part and the beginning of the third Freud draws attention to his failing strength as well as to the diminishment in his creative powers. But this admission doesn’t stop or in any way deter him from reaching difficult and often mystifyingly unsatisfactory conclusions. Like Beethoven’s late works, Freud’s Spätwerk is obsessed with returning not just to the problem of Moses’s identity - which, of course, is at the very core of the treatise - but to the very elements of identity itself, as if that issue so crucial to psychoanalysis, the very heart of the science, could be returned to in the way that Beethoven’s late work returns to such basics as tonality and rhythm.”
+
+And from H.D.'s _Tribute to Freud_:
+
+"SHE HAS LOST HER SPEAR. He might have been talking Greek. The beautiful tone of his voice had a way of taking an English phrase or sentence out of its context (out of the associated context, you might say, of the whole language) so that, although he was speaking English without a perceptible trace of accent, yet he was speaking a foreign language. The tone of his voice, the singing quality that so subtly permeated the texture of the spoken word, made that spoken word live in another dimension, or take on another colour, as if he had dipped the grey web of conventionally woven thought and with it, conventionally spoken thought, into a vat of his own brewing-or held a strip of that thought, ripped from the monotonous faded and outworn texture of the language itself, into the bubbling cauldron of his own mind in order to draw it forth dyed blue or scarlet, a new colour to the old grey mesh..."

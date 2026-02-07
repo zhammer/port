@@ -48,7 +48,7 @@ const separators = [
         {section.items.map((item, j) => (
           <>
             {j > 0 && ", "}
-            <a href={`/${section.collection}/${item.id}`}>{item.data.title}</a>
+            <a href={`/${item.id}`}>{item.data.title}</a>
           </>
         ))}
       </p>
