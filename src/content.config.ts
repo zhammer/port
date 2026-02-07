@@ -26,7 +26,7 @@ const web = defineCollection({
     title: z.string(),
     date: z.string().optional(),
     url: z.string(),
-    screenshot: z.string(),
+    screenshot: z.string().optional(),
   }),
 });
 

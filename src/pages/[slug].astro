@@ -68,7 +68,13 @@ const bandcampSrc =
     <img src={src} alt={entry.data.title} />
   ))}
 
-  {kind === "web" && <img src={entry.data.screenshot} alt={entry.data.title} />}
+  {kind === "web" && entry.data.screenshot && <img src={entry.data.screenshot} alt={entry.data.title} />}
+
+  {kind === "web" && (
+    <div class="web-embed">
+      <iframe src={entry.data.url} title={entry.data.title} />
+    </div>
+  )}
 
   {
     kind === "music" && (
@@ -117,6 +123,17 @@ const bandcampSrc =
     height: auto;
     display: block;
     padding-bottom: 16px;
+  }
+
+  .web-embed {
+    width: 100%;
+    padding-bottom: 16px;
+  }
+
+  .web-embed iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid #eee;
   }
 
   .music-embed {

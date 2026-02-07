@@ -1,5 +1,7 @@
 ---
 title: "utabia"
+date: "February 2026"
 url: "https://utabia.com"
-screenshot: "/images/pieces/utabia.png"
 ---
+
+a chrome extension for clearing browser tabs, arcade style. ([github](https://github.com/zhammer/utabia))

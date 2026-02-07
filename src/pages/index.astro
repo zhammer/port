@@ -30,7 +30,7 @@ const sections = [
   { label: "video", collection: "video", items: getOrdered("video") },
   { label: "image", collection: "image", items: getOrdered("image") },
   { label: "web", collection: "web", items: getOrdered("web") },
-  { label: "music/poetry", collection: "music", items: getOrdered("music") },
+  { label: "music", collection: "music", items: getOrdered("music") },
 ];
 
 const separators = [
@@ -41,20 +41,22 @@ const separators = [
 ---
 
 <Base title="port">
-  {sections.map((section, i) => (
-    <>
-      <p>
-        {section.label}:{" "}
-        {section.items.map((item, j) => (
-          <>
-            {j > 0 && ", "}
-            <a href={`/${item.id}`}>{item.data.title}</a>
-          </>
-        ))}
-      </p>
-      {i < separators.length && <img src={separators[i]} alt="" />}
-    </>
-  ))}
+  {
+    sections.map((section, i) => (
+      <>
+        <p>
+          {section.label}:{" "}
+          {section.items.map((item, j) => (
+            <>
+              {j > 0 && ", "}
+              <a href={`/${item.id}`}>{item.data.title}</a>
+            </>
+          ))}
+        </p>
+        {i < separators.length && <img src={separators[i]} alt="" />}
+      </>
+    ))
+  }
 </Base>
 
 <style>
