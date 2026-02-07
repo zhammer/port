@@ -1,14 +1,70 @@
 ---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import fs from "node:fs";
+import { parse } from "yaml";
 
+const raw = fs.readFileSync("src/data/order.yaml", "utf-8");
+const order = parse(raw) as Record<string, string[]>;
+
+const videoEntries = await getCollection("video");
+const imageEntries = await getCollection("image");
+const webEntries = await getCollection("web");
+const musicEntries = await getCollection("music");
+
+const collectionMaps: Record<string, Map<string, any>> = {
+  video: new Map(videoEntries.map((e) => [e.id, e])),
+  image: new Map(imageEntries.map((e) => [e.id, e])),
+  web: new Map(webEntries.map((e) => [e.id, e])),
+  music: new Map(musicEntries.map((e) => [e.id, e])),
+};
+
+function getOrdered(collection: string) {
+  const slugs = order[collection] || [];
+  return slugs
+    .map((slug) => collectionMaps[collection]?.get(slug))
+    .filter(Boolean);
+}
+
+const sections = [
+  { label: "video", collection: "video", items: getOrdered("video") },
+  { label: "image", collection: "image", items: getOrdered("image") },
+  { label: "web", collection: "web", items: getOrdered("web") },
+  { label: "music/poetry", collection: "music", items: getOrdered("music") },
+];
+
+const separators = [
+  "/images/separators/top.png",
+  "/images/separators/middle.png",
+  "/images/separators/bottom.png",
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Port</title>
-	</head>
-	<body>
-		<p>Coming soon.</p>
-	</body>
-</html>
+<Base title="port">
+  {sections.map((section, i) => (
+    <>
+      <p>
+        {section.label}:{" "}
+        {section.items.map((item, j) => (
+          <>
+            {j > 0 && ", "}
+            <a href={`/${section.collection}/${item.id}`}>{item.data.title}</a>
+          </>
+        ))}
+      </p>
+      {i < separators.length && <img src={separators[i]} alt="" />}
+    </>
+  ))}
+</Base>
+
+<style>
+  p {
+    padding: 10px 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
