@@ -96,6 +96,10 @@ ffmpeg -y -ss <start_seconds> -t <duration> -i "input.mov" \
 - 480px wide, full palette, 10fps
 - Target ~1.5-2MB per GIF (2-4 second clips work best)
 
+## Self-Maintenance
+
+When you learn something new about this project (gotchas, patterns, fixes), add it to this CLAUDE.md file and commit it. This keeps future sessions efficient.
+
 ## Adding Content
 
 1. Create `src/data/<collection>/<slug>.md` with appropriate frontmatter
