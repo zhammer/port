@@ -2,6 +2,9 @@
 title: "O!"
 date: "July 2025"
 vimeoId: "1102220306"
+preview:
+  image: "/images/previews/o.gif"
+  separator: 3
 ---
 
 the modern pulse moves very quickly

@@ -3,6 +3,10 @@ title: "improvisations #1"
 date: "February 2024"
 bandcampId: "1710937891"
 bandcampType: "track"
+preview:
+  image: "/images/previews/improvisations.png"
+  separator: 1
+  position: center 40%
 ---
 
 hey smoke trout bubble gum
