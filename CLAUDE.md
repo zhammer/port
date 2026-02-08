@@ -98,7 +98,7 @@ ffmpeg -y -ss <start_seconds> -t <duration> -i "input.mov" \
 
 ## Resume
 
-`docs/index.html` is a standalone HTML resume (not part of the Astro site). Open in a browser and Print to PDF. It lives alongside the portfolio but is not deployed. Use `npx browser-sync start --server docs --files "docs/**/*"` for live-reloading preview during edits.
+`docs/resume/index.html` is a standalone HTML resume (not part of the Astro site). Open in a browser and Print to PDF. It lives alongside the portfolio but is not deployed. Use `npx browser-sync start --server docs/resume --files "docs/resume/**/*"` for live-reloading preview during edits.
 
 ## Self-Maintenance
 
