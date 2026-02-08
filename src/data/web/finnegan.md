@@ -1,7 +1,7 @@
 ---
 title: "finnegan forever"
 url: "https://finneganforever.com"
-date: "May 2028"
+date: "May 2018"
 preview:
   image: "/images/previews/finnegan.gif"
   separator: 2

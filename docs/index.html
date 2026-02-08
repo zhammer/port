@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zach Hammer — Resume</title>
+    <style>
+      @page {
+        size: letter;
+        margin: 0.75in 0.85in;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 11pt;
+        line-height: 1.45;
+        color: #111;
+        max-width: 7in;
+        margin: 0 auto;
+        padding: 0.75in 0.85in;
+      }
+
+      @media print {
+        body {
+          padding: 0;
+          max-width: none;
+        }
+      }
+
+      /* ---- Header ---- */
+      header {
+        text-align: center;
+        margin-bottom: 0.3in;
+      }
+
+      header h1 {
+        font-size: 20pt;
+        font-weight: normal;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 4pt;
+      }
+
+      header p {
+        font-size: 10pt;
+        color: #333;
+      }
+
+      header p a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      /* ---- Sections ---- */
+      section {
+        margin-bottom: 0.25in;
+      }
+
+      section h2 {
+        font-size: 11pt;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-bottom: 0.5pt solid #111;
+        padding-bottom: 3pt;
+        margin-bottom: 8pt;
+      }
+
+      /* ---- Entry blocks ---- */
+      .entry {
+        margin-bottom: 8pt;
+      }
+
+      .entry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+
+      .entry-title {
+        font-style: italic;
+      }
+
+      .entry-title a {
+        color: #111;
+        text-decoration: underline;
+      }
+
+      .entry-date {
+        font-size: 10pt;
+        white-space: nowrap;
+        color: #333;
+      }
+
+      .entry-detail {
+        font-size: 10pt;
+        color: #333;
+        margin-top: 1pt;
+      }
+
+      .entry-detail a {
+        color: #333;
+      }
+
+      /* ---- Skills list ---- */
+      .skills-list {
+        columns: 2;
+        column-gap: 0.4in;
+        list-style: none;
+      }
+
+      .skills-list li {
+        font-size: 10.5pt;
+        margin-bottom: 3pt;
+      }
+
+      /* ---- Personal statement ---- */
+      .statement {
+        font-size: 10.5pt;
+        line-height: 1.55;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Zach Hammer</h1>
+      <p>
+        New York, NY &ensp;|&ensp;
+        <a href="mailto:zachary_hammer@alumni.brown.edu"
+          >zachary_hammer@alumni.brown.edu</a
+        >
+        &ensp;|&ensp;
+        <a href="https://zhammer.art">https://zhammer.art</a>
+      </p>
+    </header>
+
+    <section>
+      <h2>Writing</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Mikvah</span>
+          <span class="entry-date">August 2025</span>
+        </div>
+        <div class="entry-detail">
+          Full-length collection of poetry, currently seeking publication. A
+          performance of two pieces from the collection is available at
+          <a href="https://zhammer.art/owl">zhammer.art/owl</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Arturo</span>
+          <span class="entry-date">July 2018</span>
+        </div>
+        <div class="entry-detail">
+          An experimental screenplay which follows Arturo through many phases of
+          time as he looks for a lost friend
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Avril 14th</span>
+          <span class="entry-date">May 2016</span>
+        </div>
+        <div class="entry-detail">
+          A short, impressionistic collection which follows Charcoal as she goes
+          for a walk
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Multimedia &amp; Video</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            ><a href="https://zhammer.art/lief2">lief2</a></span
+          >
+          <span class="entry-date">January 2026</span>
+        </div>
+        <div class="entry-detail">
+          Video collage — piano, landscape, and textile footage
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            ><a href="https://zhammer.art/ferdinand"
+              >FERDINAND THE BULL</a
+            ></span
+          >
+          <span class="entry-date">October 2025</span>
+        </div>
+        <div class="entry-detail">
+          Video essay — multilingual response piece
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            ><a href="https://zhammer.art/o">O!</a></span
+          >
+          <span class="entry-date">July 2025</span>
+        </div>
+        <div class="entry-detail">
+          Video collage — keynote collage technique
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            ><a href="https://zhammer.art/gaze">the gaze as eye 1</a></span
+          >
+          <span class="entry-date">July 2025</span>
+        </div>
+        <div class="entry-detail">Video piece</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            ><a href="https://zhammer.art/train"
+              >train // a bassist silence</a
+            ></span
+          >
+          <span class="entry-date">January 2025</span>
+        </div>
+        <div class="entry-detail">Video — live music and train footage</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Web</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            ><a href="https://utabia.com">utabia.com</a></span
+          >
+          <span class="entry-date">February 2026</span>
+        </div>
+        <div class="entry-detail">
+          A Chrome extension for clearing browser tabs on the beach with a laser
+          gun
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            ><a href="https://8bit.morningcd.com">8bit.morningcd.com</a></span
+          >
+          <span class="entry-date">May 2019</span>
+        </div>
+        <div class="entry-detail">
+          A collaborative playlist based on the first pieces of music people
+          listen to all over the world
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            ><a href="https://finneganforever.com">finneganforever.com</a></span
+          >
+          <span class="entry-date">May 2018</span>
+        </div>
+        <div class="entry-detail">
+          40 characters of Finnegans Wake every four seconds, forever
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Professional Work</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title"
+            >Senior Software Developer &amp; Engineering Manager</span
+          >
+          <span class="entry-date">2017 – Present</span>
+        </div>
+        <div class="entry-detail">New York, NY</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills &amp; Interests</h2>
+      <ul class="skills-list">
+        <li>Poetry / experimental writing</li>
+        <li>Digital collage</li>
+        <li>Film</li>
+        <li>Interactive web</li>
+        <li>Photography</li>
+        <li>Music</li>
+      </ul>
+    </section>
+  </body>
+</html>

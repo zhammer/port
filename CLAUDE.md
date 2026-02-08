@@ -96,6 +96,10 @@ ffmpeg -y -ss <start_seconds> -t <duration> -i "input.mov" \
 - 480px wide, full palette, 10fps
 - Target ~1.5-2MB per GIF (2-4 second clips work best)
 
+## Resume
+
+`docs/index.html` is a standalone HTML resume (not part of the Astro site). Open in a browser and Print to PDF. It lives alongside the portfolio but is not deployed. Use `npx browser-sync start --server docs --files "docs/**/*"` for live-reloading preview during edits.
+
 ## Self-Maintenance
 
 When you learn something new about this project (gotchas, patterns, fixes), add it to this CLAUDE.md file and commit it. This keeps future sessions efficient.
