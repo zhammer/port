@@ -5,6 +5,7 @@ import { z } from "astro/zod";
 const preview = z.object({
   image: z.string().optional(),
   separator: z.number(),
+  position: z.string().optional(),
 }).optional();
 
 const video = defineCollection({

@@ -40,7 +40,7 @@ const separators = [
 ];
 
 // Collect all preview hover rules
-const previewRules: { slug: string; separator: number; previewImage: string }[] = [];
+const previewRules: { slug: string; separator: number; previewImage: string; position?: string }[] = [];
 for (const section of sections) {
   for (const item of section.items) {
     if (item.data.preview) {
@@ -54,6 +54,7 @@ for (const section of sections) {
           slug: item.id,
           separator: item.data.preview.separator,
           previewImage,
+          position: item.data.preview.position,
         });
       }
     }
@@ -88,6 +89,7 @@ for (const section of sections) {
                   alt=""
                   class="separator-preview"
                   data-for={r.slug}
+                  style={r.position ? `object-position: ${r.position}` : undefined}
                 />
               ))}
           </div>
@@ -110,15 +112,13 @@ for (const section of sections) {
   .separator {
     position: relative;
     width: 100%;
-  }
-
-  .separator img {
-    width: 100%;
-    height: auto;
-    display: block;
+    overflow: hidden;
   }
 
   .separator-default {
+    width: 100%;
+    height: auto;
+    display: block;
     transition: opacity 0.15s;
   }
 

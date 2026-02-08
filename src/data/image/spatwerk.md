@@ -2,6 +2,8 @@
 title: "Spätwerk"
 date: "June 2024"
 image: "/images/pieces/spatwerk.png"
+preview:
+  separator: 3
 ---
 
 Excerpt is from Edward Said’s _Freud and the Non-European_, Said’s last book from a lecture he gave that was banned by the Freud institute in Vienna. Said is writing about _Freud’s_ last book: Moses and Monotheism.
