@@ -30,7 +30,7 @@ const sections = [
   { label: "video", collection: "video", items: getOrdered("video") },
   { label: "web", collection: "web", items: getOrdered("web") },
   { label: "image", collection: "image", items: getOrdered("image") },
-  { label: "music/poetry", collection: "music", items: getOrdered("music") },
+  { label: "music", collection: "music", items: getOrdered("music") },
 ];
 
 const separators = [
@@ -40,7 +40,12 @@ const separators = [
 ];
 
 // Collect all preview hover rules
-const previewRules: { slug: string; separator: number; previewImage: string; position?: string }[] = [];
+const previewRules: {
+  slug: string;
+  separator: number;
+  previewImage: string;
+  position?: string;
+}[] = [];
 for (const section of sections) {
   for (const item of section.items) {
     if (item.data.preview) {
@@ -64,55 +69,77 @@ for (const section of sections) {
 
 <Base title="port">
   <div class="home">
-    {sections.map((section, i) => (
-      <>
-        <p>
-          {section.label}:{" "}
-          {section.items.map((item, j) => (
-            <>
-              {j > 0 && ", "}
-              <a
-                href={`/${item.id}`}
-                data-preview={item.data.preview ? item.id : undefined}
-              >{item.data.title}</a>
-            </>
-          ))}
-        </p>
-        {i < separators.length && (
-          <div class="separator" id={`sep-${i + 1}`}>
-            <img src={separators[i]} alt="" class="separator-default" />
-            {previewRules
-              .filter((r) => r.separator === i + 1)
-              .map((r) => (
-                <img
-                  src={r.previewImage}
-                  alt=""
-                  class="separator-preview"
-                  data-for={r.slug}
-                  style={r.position ? `object-position: ${r.position}` : undefined}
-                />
-              ))}
-          </div>
-        )}
-      </>
-    ))}
+    {
+      sections.map((section, i) => (
+        <>
+          <p>
+            {section.label}:{" "}
+            {section.items.map((item, j) => (
+              <>
+                {j > 0 && ", "}
+                <a
+                  href={`/${item.id}`}
+                  data-preview={item.data.preview ? item.id : undefined}
+                >
+                  {item.data.title}
+                </a>
+              </>
+            ))}
+          </p>
+          {i < separators.length && (
+            <div class="separator" id={`sep-${i + 1}`}>
+              <img src={separators[i]} alt="" class="separator-default" />
+              {previewRules
+                .filter((r) => r.separator === i + 1)
+                .map((r) => (
+                  <img
+                    src={r.previewImage}
+                    alt=""
+                    class="separator-preview"
+                    data-for={r.slug}
+                    style={
+                      r.position ? `object-position: ${r.position}` : undefined
+                    }
+                  />
+                ))}
+            </div>
+          )}
+        </>
+      ))
+    }
   </div>
   <footer class="mail">
     <a href="mailto:zach.the.hammer@gmail.com" aria-label="Email">
       <span class="wing left">🪽</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
       </svg>
       <span class="wing right">🪽</span>
     </a>
   </footer>
 </Base>
 
-<style is:global set:html={previewRules.map((r) =>
-  `.home:has(a[data-preview="${r.slug}"]:hover) #sep-${r.separator} .separator-default { opacity: 0; }
+<style
+  is:global
+  set:html={previewRules
+    .map(
+      (r) =>
+        `.home:has(a[data-preview="${r.slug}"]:hover) #sep-${r.separator} .separator-default { opacity: 0; }
 .home:has(a[data-preview="${r.slug}"]:hover) #sep-${r.separator} .separator-preview[data-for="${r.slug}"] { opacity: 1; }`
-).join("\n")} />
+    )
+    .join("\n")}
+></style>
 
 <style>
   p {

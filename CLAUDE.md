@@ -62,7 +62,7 @@ preview:
 
 ## Homepage
 
-- Sections display in order: video, web, image, music/poetry
+- Sections display in order: video, web, image, music
 - Comma-separated links within each section
 - 3 separator images between sections
 - Hover preview: CSS `:has()` selectors swap separator images on link hover
