@@ -16,6 +16,7 @@ image:
   - place
 
 web:
+  - mount-sinai-vs-anthem-2026
   - finnegan
   - utabia
   - scribly
